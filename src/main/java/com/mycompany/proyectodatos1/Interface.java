@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,8 +31,7 @@ public class Interface extends javax.swing.JFrame {
 
     File Archivo;
     String servis;
-    
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -66,6 +66,7 @@ public class Interface extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         frameAdmin = new javax.swing.JFrame();
         jButton6 = new javax.swing.JButton();
+        Fchooser = new javax.swing.JFileChooser();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -104,6 +105,11 @@ public class Interface extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton7.setText("Agregar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Guardar");
 
@@ -207,9 +213,9 @@ public class Interface extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel8))
                 .addGap(27, 27, 27)
-                .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel9))
+                .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -377,7 +383,21 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        frameCliente.setVisible(true);        
+        int op = Fchooser.showOpenDialog(this);
+        frameCliente.setVisible(true);
+        String sDir = "C:\\user"; // direccion
+        File f = new File(sDir); // instacia de la carpeta
+        String ruta = "C:\\user"; // ruta para el archivo
+        String fileName = "cliente.txt"; // nombre
+        File file = new File(ruta, fileName); // instancia el archivo       
+        if (!file.exists()) {
+            f.mkdir();
+            try {
+                file.createNewFile();
+            } catch (IOException ex) {
+                System.out.println("Error en la creacion");
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -401,11 +421,11 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        
+
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -414,38 +434,41 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-
-        String sDir="C:\\user"; // direccion
-        File f = new File(sDir); // instacia de la carpeta
-        String ruta ="C:\\user"; // ruta para el archivo
-        String fileName= "cliente.txt"; // nombre
-        File file = new File(ruta,fileName); // instancia el archivo       
-        if (!file.exists()){
-            f.mkdir();            
-            try {
-                file.createNewFile();
-            } catch (IOException ex) {
-                System.out.println("Error en la creacion");
-            }            
-        }
+        boolean encontrado = false;
         String cedu = Cedula.getText();
-        try(FileWriter fw= new FileWriter(file.getAbsolutePath(),true)){
-        BufferedWriter bw = new BufferedWriter(fw);
-        bw.write(cedu);
-        bw.newLine();
-        bw.flush();
-        bw.close();
-        fw.close();
+        String ruta = "C:\\user";
+        String fileName = "cliente.txt";
+        File file = new File(ruta, fileName);
+        Archivo = Fchooser.getSelectedFile();
+        try (Scanner sc = new Scanner(Archivo)) {
+            while (sc.hasNextLine() & encontrado == false) {
+                String cedul = sc.nextLine();
+                if (cedu.equals(cedul)) {
+                    JOptionPane.showMessageDialog(null, "Esta cedula ya esta registrada");
+                    encontrado = true;
+                }
+            }
+        } catch (Exception ex) {
+
         }
-        catch (Exception ex) {
-            System.out.println("Error, no se pudo escribir");
+        if (encontrado == false) {
+            try (FileWriter fw = new FileWriter(file.getAbsolutePath(), true)) {
+                BufferedWriter bw = new BufferedWriter(fw);
+                bw.write(cedu);
+                bw.newLine();
+                bw.flush();
+                bw.close();
+                fw.close();
+            } catch (Exception ex) {
+                System.out.println("Error, no se pudo escribir");
+            }
         }
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    
-    public static void creararchivo(String name){
-        
-    }
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -480,11 +503,11 @@ public class Interface extends javax.swing.JFrame {
             }
         });
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Cedula;
+    private javax.swing.JFileChooser Fchooser;
     private javax.swing.JFrame frameAdmin;
     private javax.swing.JFrame frameCliente;
     private javax.swing.JFrame frameVeterinario;
