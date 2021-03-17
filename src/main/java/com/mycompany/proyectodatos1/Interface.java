@@ -48,7 +48,6 @@ public class Interface extends javax.swing.JFrame {
         Cedula = new javax.swing.JTextField();
         crearcedu = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
@@ -60,8 +59,6 @@ public class Interface extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         Savecambios = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablaoculta = new javax.swing.JTable();
         frameVeterinario = new javax.swing.JFrame();
         jButton5 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
@@ -89,6 +86,8 @@ public class Interface extends javax.swing.JFrame {
         totalcaja = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         Fchooser = new javax.swing.JFileChooser();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaoculta = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -122,9 +121,6 @@ public class Interface extends javax.swing.JFrame {
         });
 
         jLabel8.setText("Agenda de citas");
-
-        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel9.setText("Por favor asegurese de llenar los campos de la izquierda");
 
         jLabel10.setText("Por favor elija El servicio");
 
@@ -196,35 +192,6 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        tablaoculta.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Cedula", "Nombre del perro", "Raza del perro", "Color", "Fecha de nacimiento"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tablaoculta.getTableHeader().setReorderingAllowed(false);
-        jScrollPane2.setViewportView(tablaoculta);
-        if (tablaoculta.getColumnModel().getColumnCount() > 0) {
-            tablaoculta.getColumnModel().getColumn(0).setResizable(false);
-            tablaoculta.getColumnModel().getColumn(0).setPreferredWidth(30);
-            tablaoculta.getColumnModel().getColumn(1).setResizable(false);
-            tablaoculta.getColumnModel().getColumn(2).setResizable(false);
-            tablaoculta.getColumnModel().getColumn(2).setPreferredWidth(60);
-            tablaoculta.getColumnModel().getColumn(3).setResizable(false);
-            tablaoculta.getColumnModel().getColumn(3).setPreferredWidth(25);
-            tablaoculta.getColumnModel().getColumn(4).setResizable(false);
-        }
-
         javax.swing.GroupLayout frameClienteLayout = new javax.swing.GroupLayout(frameCliente.getContentPane());
         frameCliente.getContentPane().setLayout(frameClienteLayout);
         frameClienteLayout.setHorizontalGroup(
@@ -249,7 +216,6 @@ public class Interface extends javax.swing.JFrame {
                                 .addGap(53, 53, 53)))
                         .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel9)
                             .addComponent(jLabel8)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(frameClienteLayout.createSequentialGroup()
@@ -260,22 +226,17 @@ public class Interface extends javax.swing.JFrame {
                                 .addComponent(jButton10))
                             .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(frameClienteLayout.createSequentialGroup()
-                        .addComponent(Savecambios)
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Savecambios))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         frameClienteLayout.setVerticalGroup(
             frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frameClienteLayout.createSequentialGroup()
                 .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(frameClienteLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(64, 64, 64)
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel9)
-                        .addGap(30, 30, 30)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -305,10 +266,8 @@ public class Interface extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)))
-                .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Savecambios)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(Savecambios)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         frameVeterinario.setMinimumSize(new java.awt.Dimension(500, 500));
@@ -345,6 +304,11 @@ public class Interface extends javax.swing.JFrame {
         jLabel22.setText("Prescripcion");
 
         Guardar_veterinario.setText("Guardar cambios");
+        Guardar_veterinario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Guardar_veterinarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout frameVeterinarioLayout = new javax.swing.GroupLayout(frameVeterinario.getContentPane());
         frameVeterinario.getContentPane().setLayout(frameVeterinarioLayout);
@@ -501,6 +465,35 @@ public class Interface extends javax.swing.JFrame {
                 .addGap(32, 32, 32))
         );
 
+        tablaoculta.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cedula", "Nombre del perro", "Raza del perro", "Color", "Fecha de nacimiento"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tablaoculta.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tablaoculta);
+        if (tablaoculta.getColumnModel().getColumnCount() > 0) {
+            tablaoculta.getColumnModel().getColumn(0).setResizable(false);
+            tablaoculta.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tablaoculta.getColumnModel().getColumn(1).setResizable(false);
+            tablaoculta.getColumnModel().getColumn(2).setResizable(false);
+            tablaoculta.getColumnModel().getColumn(2).setPreferredWidth(60);
+            tablaoculta.getColumnModel().getColumn(3).setResizable(false);
+            tablaoculta.getColumnModel().getColumn(3).setPreferredWidth(25);
+            tablaoculta.getColumnModel().getColumn(4).setResizable(false);
+        }
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -581,7 +574,7 @@ public class Interface extends javax.swing.JFrame {
                 System.out.println("Error en la creacion");
             }
         }
-        tablaoculta.setVisible(true);
+        tablaoculta.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -621,6 +614,9 @@ public class Interface extends javax.swing.JFrame {
         cedu = Cedula.getText();
         Archivo = Fchooser.getSelectedFile();
         DefaultTableModel model = (DefaultTableModel) table.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            model.removeRow(0);
+        }
         try (Scanner sc = new Scanner(Archivo)) {
             while (sc.hasNextLine()) {
                 String lector = sc.nextLine();
@@ -668,7 +664,7 @@ public class Interface extends javax.swing.JFrame {
         }
         if (encontrado == false) {
             perronuevo();
-            Creararchivocliente("cliente", cedu, Nombreperro, Razaperro, Colorperro, Fechaperro);
+            Creararchivo("cliente", cedu, Nombreperro, Razaperro, Colorperro, Fechaperro);
         }
         iperros = 1;
     }//GEN-LAST:event_crearceduActionPerformed
@@ -684,7 +680,7 @@ public class Interface extends javax.swing.JFrame {
     private void SavecambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavecambiosActionPerformed
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         DefaultTableModel modoculta = (DefaultTableModel) tablaoculta.getModel();
-        for (int i = 0; i < modoculta.getRowCount() - 1; i++) {
+        for (int i = 0; i < modoculta.getRowCount(); i++) {
             modoculta.removeRow(0);
         }
         try (Scanner sc = new Scanner(Archivo)) {
@@ -696,7 +692,7 @@ public class Interface extends javax.swing.JFrame {
         } catch (Exception ex) {
 
         }
-        String aux[][] = new String[model.getRowCount() + 1][5];
+        String aux[][] = new String[model.getRowCount()][5];
         for (int i = 0; i < model.getRowCount(); i++) {
             aux[i][0] = (String) model.getValueAt(i, 0);
             aux[i][1] = (String) model.getValueAt(i, 1);
@@ -731,7 +727,15 @@ public class Interface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SavecambiosActionPerformed
 
-    public void Creararchivocliente(String nomarchi, String cedul, String Nombreperro, String Razaperro, String Colorperro, String Fechaperro) {
+    private void Guardar_veterinarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar_veterinarioActionPerformed
+        String ceduladueño = cdueño.getText();
+        String nombreperro = Nomperro.getText();
+        String diagnostic = Diagnostico.getText();
+        String prescrip = Prescripcion.getText();
+        Creararchivo ("Hoja de vida", ceduladueño, nombreperro, diagnostic, prescrip, "");
+    }//GEN-LAST:event_Guardar_veterinarioActionPerformed
+
+    public void Creararchivo(String nomarchi, String cedul, String Nombreperro, String Razaperro, String Colorperro, String Fechaperro) {
         String ruta = "C:\\user";
         String fileName = nomarchi + ".txt";
         File file = new File(ruta, fileName);
@@ -841,7 +845,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField2;
