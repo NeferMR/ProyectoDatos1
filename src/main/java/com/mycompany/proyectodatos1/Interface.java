@@ -32,10 +32,10 @@ public class Interface extends javax.swing.JFrame {
         initComponents();
     }
 
-    File Archivo;
+    File Archivo, arch;
     String servis, cedu, Nombreperro, Razaperro, Colorperro, Fechaperro;
     String perros[] = new String[100];
-    int iperros = 0;
+    int iperros = 0, seleccita, casovete;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,14 +51,16 @@ public class Interface extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton10 = new javax.swing.JButton();
+        tiempoo = new javax.swing.JTextField();
         buscarcedu = new javax.swing.JButton();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        Datec = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         Savecambios = new javax.swing.JButton();
+        Solcita = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        Horas = new javax.swing.JComboBox<>();
+        buscarhoras = new javax.swing.JButton();
         frameVeterinario = new javax.swing.JFrame();
         jButton5 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
@@ -88,6 +90,12 @@ public class Interface extends javax.swing.JFrame {
         Fchooser = new javax.swing.JFileChooser();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaoculta = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        Nchooser = new javax.swing.JFileChooser();
+        jFrame1 = new javax.swing.JFrame();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -125,6 +133,11 @@ public class Interface extends javax.swing.JFrame {
         jLabel10.setText("Por favor elija El servicio");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consulta veterinario", "Control", "Desparasitación", "Vacunación", "Guarderia solo por día", "Radiologia", "Baño" }));
+        jComboBox2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jComboBox2MouseClicked(evt);
+            }
+        });
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -133,17 +146,10 @@ public class Interface extends javax.swing.JFrame {
 
         jLabel11.setText("Tiempo gastado");
 
-        jTextField2.setText(" ");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        tiempoo.setText(" ");
+        tiempoo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
-        jButton10.setText("Calcular");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                tiempooActionPerformed(evt);
             }
         });
 
@@ -153,8 +159,6 @@ public class Interface extends javax.swing.JFrame {
                 buscarceduActionPerformed(evt);
             }
         });
-
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -192,6 +196,24 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        Solcita.setText("Asignar cita");
+        Solcita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SolcitaActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Elija su fecha");
+
+        Horas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
+
+        buscarhoras.setText("Actualzar");
+        buscarhoras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarhorasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout frameClienteLayout = new javax.swing.GroupLayout(frameCliente.getContentPane());
         frameCliente.getContentPane().setLayout(frameClienteLayout);
         frameClienteLayout.setHorizontalGroup(
@@ -218,21 +240,22 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel8)
                             .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)
+                            .addComponent(tiempoo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Datec, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Solcita)
+                            .addComponent(jLabel4)
                             .addGroup(frameClienteLayout.createSequentialGroup()
-                                .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton10))
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(Horas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buscarhoras))))
                     .addComponent(Savecambios))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         frameClienteLayout.setVerticalGroup(
             frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(frameClienteLayout.createSequentialGroup()
-                .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(frameClienteLayout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addComponent(jLabel8)
@@ -243,13 +266,17 @@ public class Interface extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton10))
-                        .addGap(31, 31, 31)
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tiempoo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Datec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(frameClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Horas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buscarhoras))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Solcita))
                     .addGroup(frameClienteLayout.createSequentialGroup()
                         .addComponent(jButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -266,7 +293,7 @@ public class Interface extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Savecambios)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         frameVeterinario.setMinimumSize(new java.awt.Dimension(500, 500));
@@ -493,6 +520,76 @@ public class Interface extends javax.swing.JFrame {
             tablaoculta.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+            jTable1.getColumnModel().getColumn(2).setResizable(false);
+            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cedula", "Nombre", "Raza", "Color", "Fecha de nacimiento", "Tipo de cita", "Fecha de cita", "Hora de cita", "duracion cita"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setResizable(false);
+            jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setResizable(false);
+            jTable2.getColumnModel().getColumn(3).setResizable(false);
+            jTable2.getColumnModel().getColumn(4).setResizable(false);
+            jTable2.getColumnModel().getColumn(5).setResizable(false);
+            jTable2.getColumnModel().getColumn(6).setResizable(false);
+            jTable2.getColumnModel().getColumn(7).setResizable(false);
+            jTable2.getColumnModel().getColumn(8).setResizable(false);
+        }
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(92, Short.MAX_VALUE))
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -628,18 +725,37 @@ public class Interface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buscarceduActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        int i = jComboBox2.getSelectedIndex();
-        servis = jComboBox2.getItemAt(i);
-        jTextField2.setText(servis);
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void tiempooActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempooActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_tiempooActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-
+        switch (jComboBox2.getSelectedIndex()) {
+            case 4:
+                tiempoo.setText("Todo el dia");
+                seleccita = 1;
+                casovete = 0;
+                break;
+            case 6:
+                tiempoo.setText("2 Hora");
+                seleccita = 2;
+                casovete = 0;
+                break;
+            case 0:
+            case 5:
+                tiempoo.setText("1 Hora");
+                seleccita = 3;
+                casovete = 2;
+                break;
+            default:
+                tiempoo.setText("1/2 Hora");
+                seleccita = 4;
+                casovete = 1;
+                break;
+        }
+        //int i = jComboBox2.getSelectedIndex();
+        //servis = jComboBox2.getItemAt(i);
+        //tiempoo.setText(servis);
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void crearceduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearceduActionPerformed
@@ -661,7 +777,7 @@ public class Interface extends javax.swing.JFrame {
         }
         if (encontrado == false) {
             perronuevo();
-            Creararchivo("cliente", cedu, Nombreperro, Razaperro, Colorperro, Fechaperro);
+            Creararchivo("cliente", cedu, Nombreperro, Razaperro, Colorperro, Fechaperro, "", "", "", "", "");
         }
         iperros = 1;
     }//GEN-LAST:event_crearceduActionPerformed
@@ -736,16 +852,119 @@ public class Interface extends javax.swing.JFrame {
         String nombreperro = Nomperro.getText();
         String diagnostic = Diagnostico.getText();
         String prescrip = Prescripcion.getText();
-        Creararchivo("Hoja de vida", ceduladueño, nombreperro, diagnostic, prescrip, "");
+        Creararchivo("Hoja de vida", ceduladueño, nombreperro, diagnostic, prescrip, "", "", "", "", "", "");
     }//GEN-LAST:event_Guardar_veterinarioActionPerformed
 
-    public void Creararchivo(String nomarchi, String cedul, String Nombreperro, String Razaperro, String Colorperro, String Fechaperro) {
+    private void jComboBox2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jComboBox2MouseClicked
+
+    }//GEN-LAST:event_jComboBox2MouseClicked
+
+    private void SolcitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolcitaActionPerformed
+        boolean error = false;
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        if (table.getSelectedRow() == -1) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione un perro de la tabla anterior");
+            error = true;
+        }
+        String fecha = "";
+        try {
+            String dia = Integer.toString(Datec.getCalendar().get(Calendar.DAY_OF_MONTH));
+            String mes = Integer.toString(Datec.getCalendar().get(Calendar.MONTH) + 1);
+            String year = Integer.toString(Datec.getCalendar().get(Calendar.YEAR));
+            JOptionPane.showMessageDialog(null, dia + "/" + mes + "/" + year);
+            fecha = dia + "/" + mes + "/" + year;
+        } catch (java.lang.NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione una fecha");
+            error = true;
+        }
+        if (!error) {
+            int index = jComboBox2.getSelectedIndex();
+            String citasel = jComboBox2.getItemAt(index);
+            int inde = Horas.getSelectedIndex();
+            String horaselec = Horas.getItemAt(inde);
+            String horasiguiente = Horas.getItemAt(inde+1);
+            Creararchivo("Agenda", (String) model.getValueAt(table.getSelectedRow(), 0), (String) model.getValueAt(table.getSelectedRow(), 1), (String) model.getValueAt(table.getSelectedRow(), 2), (String) model.getValueAt(table.getSelectedRow(), 3), (String) model.getValueAt(table.getSelectedRow(), 4), citasel, fecha, horaselec, tiempoo.getText(), String.valueOf(casovete));
+            if(casovete == 2) {
+            Creararchivo("Agenda", (String) model.getValueAt(table.getSelectedRow(), 0), (String) model.getValueAt(table.getSelectedRow(), 1), (String) model.getValueAt(table.getSelectedRow(), 2), (String) model.getValueAt(table.getSelectedRow(), 3), (String) model.getValueAt(table.getSelectedRow(), 4), citasel, fecha, horasiguiente, tiempoo.getText(), "3");
+            }
+        }
+    }//GEN-LAST:event_SolcitaActionPerformed
+
+    private void buscarhorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarhorasActionPerformed
+        Horas.removeAllItems();
+        String dia = "", mes = "", year = "";
+        if(tiempoo.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Por favor vuelva a seleccionar el servicio, ha ocurido un error");
+        }
+        int op = Nchooser.showOpenDialog(this);
+        arch = Nchooser.getSelectedFile();
+        File f = new File("C:\\user"); // instacia de la carpeta
+        File file = new File("C:\\user", "Agenda.txt"); // instancia el archivo       
+        if (!file.exists()) {
+            f.mkdir();
+            try {
+                file.createNewFile();
+            } catch (IOException ex) {
+                System.out.println("Error en la creacion");
+            }
+        }
+        try {
+            dia = Integer.toString(Datec.getCalendar().get(Calendar.DAY_OF_MONTH));
+            mes = Integer.toString(Datec.getCalendar().get(Calendar.MONTH) + 1);
+            year = Integer.toString(Datec.getCalendar().get(Calendar.YEAR));
+        } catch (java.lang.NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Por favor seleccione una fecha");
+        }
+        boolean citaocupada;
+        int mañana = 8, tarde = 2, descuento = 0;
+        if(seleccita == 2) {
+            descuento = 2;
+        }
+        for (int i = 0; i < 5 - descuento; i++) {
+            citaocupada = econtrarcita(dia, mes, year, String.valueOf((mañana + i) + ":00"));
+            if (!citaocupada) {
+                Horas.addItem(String.valueOf((mañana + i) + ":00"));
+            }
+            citaocupada = econtrarcita(dia, mes, year, String.valueOf((mañana + i) + ":30"));
+            if (seleccita == 3) {
+                if (i < 4) {
+                    if (!citaocupada) {
+                        Horas.addItem(String.valueOf((mañana + i) + ":30"));
+                    }
+                }
+            } else {
+                if (!citaocupada) {
+                    Horas.addItem(String.valueOf((mañana + i) + ":30"));
+                }
+            }
+        }
+        for (int i = 0; i < 4 - descuento; i++) {
+            citaocupada = econtrarcita(dia, mes, year, String.valueOf((tarde + i) + ":00"));
+            if (!citaocupada) {
+                Horas.addItem(String.valueOf((tarde + i) + ":00"));
+            }
+            citaocupada = econtrarcita(dia, mes, year, String.valueOf((tarde + i) + ":30"));
+            if (seleccita == 3) {
+                if (i < 3) {
+                    if (!citaocupada) {
+                        Horas.addItem(String.valueOf((tarde + i) + ":30"));
+                    }
+                }
+            } else {
+                if (!citaocupada) {
+                    Horas.addItem(String.valueOf((tarde + i) + ":30"));
+                }
+            }
+        }
+    }//GEN-LAST:event_buscarhorasActionPerformed
+
+    public void Creararchivo(String nomarchi, String cedul, String Nombreperro, String Razaperro, String Colorperro, String Fechaperro, String Tipocita, String Fechacita, String Horacita, String Duracioncita, String veteri) {
         String ruta = "C:\\user";
         String fileName = nomarchi + ".txt";
         File file = new File(ruta, fileName);
         try (FileWriter fw = new FileWriter(file.getAbsolutePath(), true)) {
             BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(cedul + "," + Nombreperro + "," + Razaperro + "," + Colorperro + "," + Fechaperro);
+            bw.write(cedul + "," + Nombreperro + "," + Razaperro + "," + Colorperro + "," + Fechaperro + "," + Tipocita + "," + Fechacita + "," + Horacita + "," + Duracioncita + "," + veteri);
             bw.newLine();
             bw.flush();
             bw.close();
@@ -758,16 +977,32 @@ public class Interface extends javax.swing.JFrame {
     public void perronuevo() {
         do {
             Nombreperro = JOptionPane.showInputDialog("Por favor digite el nombre del perro");
-        } while (Nombreperro == "");
+        } while ("".equals(Nombreperro));
         do {
             Razaperro = JOptionPane.showInputDialog("Por favor digite La raza del perro");
-        } while (Razaperro == "");
+        } while ("".equals(Razaperro));
         do {
             Colorperro = JOptionPane.showInputDialog("Por favor digite El color del perro");
-        } while (Colorperro == "");
+        } while ("".equals(Colorperro));
         do {
             Fechaperro = JOptionPane.showInputDialog("Por favor digite La fecha de nacimiento del perro (DD/MM/AAAA)");
-        } while (Fechaperro == "");
+        } while ("".equals(Fechaperro));
+    }
+
+    public boolean econtrarcita(String dia, String mes, String año, String Hora) {
+        try (Scanner sc = new Scanner(arch)) {
+            while (sc.hasNextLine()) {
+                String lector = sc.nextLine();
+                String datos[] = lector.split(",");
+                String fecha[] = datos[6].split("/");
+                if (((dia + "/" + mes + "/" + año).equals(datos[6])) && Hora.equals(datos[7]) && !datos[9].equals("0")) {
+                    return true;
+                }
+            }
+        } catch (Exception ex) {
+
+        }
+        return false;
     }
 
     public static void main(String args[]) {
@@ -807,14 +1042,19 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton Asigcita;
     private javax.swing.JTextField Cedula;
     private javax.swing.JButton ConAgen;
+    private com.toedter.calendar.JDateChooser Datec;
     private javax.swing.JTextField Diagnostico;
     private javax.swing.JFileChooser Fchooser;
     private javax.swing.JButton Guardar_veterinario;
+    private javax.swing.JComboBox<String> Horas;
     private javax.swing.JButton Modicita;
+    private javax.swing.JFileChooser Nchooser;
     private javax.swing.JTextField Nomperro;
     private javax.swing.JTextField Prescripcion;
     private javax.swing.JButton Savecambios;
+    private javax.swing.JButton Solcita;
     private javax.swing.JButton buscarcedu;
+    private javax.swing.JButton buscarhoras;
     private javax.swing.JTextField cdueño;
     private javax.swing.JButton concitas;
     private javax.swing.JButton crearcedu;
@@ -823,15 +1063,13 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JFrame frameCliente;
     private javax.swing.JFrame frameVeterinario;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -848,12 +1086,17 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTable tablaoculta;
     private javax.swing.JTable table;
+    private javax.swing.JTextField tiempoo;
     private javax.swing.JButton totalcaja;
     // End of variables declaration//GEN-END:variables
 }
