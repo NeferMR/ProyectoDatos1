@@ -32,9 +32,29 @@ public class Interface extends javax.swing.JFrame {
         imagenvete.setIcon(new ImageIcon("src/main/java/com/mycompany/proyectodatos1/vet_ps.png"));
         imagencliente.setIcon(new ImageIcon("src/main/java/com/mycompany/proyectodatos1/cliente_ps.png"));
         imagenadmin.setIcon(new ImageIcon("src/main/java/com/mycompany/proyectodatos1/admin_ps.png"));
+        File f = new File("C:\\user"); // instacia de la carpeta
+        File file = new File("C:\\user", "Cliente.txt"); // instancia el archivo       
+        if (!file.exists()) {
+            f.mkdir();
+            try {
+                file.createNewFile();
+            } catch (IOException ex) {
+                System.out.println("Error en la creacion");
+            }
+        }
+        file = new File("C:\\user", "Agenda.txt"); // instancia el archivo       
+        if (!file.exists()) {
+            f.mkdir();
+            try {
+                file.createNewFile();
+            } catch (IOException ex) {
+                System.out.println("Error en la creacion");
+            }
+        }
     }
 
-    File Archivo, arch;
+    File Archivo = new File("c:\\user", "Cliente.txt"), arch = new File("C:\\user", "Agenda.txt");
+    ;
     String servis, cedu, Nombreperro, Razaperro, Colorperro, Fechaperro;
     String perros[] = new String[100];
     int iperros = 0, seleccita, casovete;
@@ -113,6 +133,8 @@ public class Interface extends javax.swing.JFrame {
         nacimientoadmin = new com.toedter.calendar.JDateChooser();
         jLabel31 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
+        jLabel35 = new javax.swing.JLabel();
+        cedcaja = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaoculta = new javax.swing.JTable();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -124,10 +146,15 @@ public class Interface extends javax.swing.JFrame {
         cedulacitas = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel34 = new javax.swing.JLabel();
         Fagenda = new javax.swing.JFrame();
         jScrollPane5 = new javax.swing.JScrollPane();
         citastabla = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        tablacaja = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -554,7 +581,7 @@ public class Interface extends javax.swing.JFrame {
         );
 
         frameAdmin.setBackground(new java.awt.Color(255, 255, 255));
-        frameAdmin.setMinimumSize(new java.awt.Dimension(640, 520));
+        frameAdmin.setMinimumSize(new java.awt.Dimension(850, 460));
 
         jButton6.setBackground(new java.awt.Color(204, 255, 255));
         jButton6.setFont(new java.awt.Font("Futura Lt BT", 1, 14)); // NOI18N
@@ -696,6 +723,8 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
+        jLabel35.setText("Por favor digite la cedula");
+
         javax.swing.GroupLayout frameAdminLayout = new javax.swing.GroupLayout(frameAdmin.getContentPane());
         frameAdmin.getContentPane().setLayout(frameAdminLayout);
         frameAdminLayout.setHorizontalGroup(
@@ -703,20 +732,21 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(frameAdminLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jButton6)
-                    .addComponent(concitas)
-                    .addComponent(elimcita, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Modicita, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(totalcaja)))
-                .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(frameAdminLayout.createSequentialGroup()
-                        .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel12)
+                            .addComponent(jButton6)
+                            .addComponent(concitas)
+                            .addComponent(elimcita, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Modicita, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(frameAdminLayout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(jLabel7))
+                                .addGap(16, 16, 16)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel35)
+                            .addGroup(frameAdminLayout.createSequentialGroup()
+                                .addComponent(cedcaja)
+                                .addGap(24, 24, 24)))
+                        .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(frameAdminLayout.createSequentialGroup()
                                 .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(frameAdminLayout.createSequentialGroup()
@@ -727,43 +757,45 @@ public class Interface extends javax.swing.JFrame {
                                             .addComponent(jLabel9)
                                             .addComponent(jLabel23)
                                             .addComponent(nombreadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel24))
-                                        .addGap(31, 31, 31))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameAdminLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel25)
+                                            .addComponent(jLabel24)
                                             .addComponent(jLabel31)
                                             .addComponent(nacimientoadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                        .addGap(37, 37, 37))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, frameAdminLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel25)
+                                        .addGap(18, 18, 18)))
                                 .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(frameAdminLayout.createSequentialGroup()
-                                        .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(citadmin, 0, 195, Short.MAX_VALUE)
-                                            .addComponent(jLabel26)
-                                            .addComponent(jLabel28)
-                                            .addComponent(jLabel27)
-                                            .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(Horadmin, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jLabel29, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(coloradmin))
-                                        .addGap(1, 1, 1)
+                                        .addComponent(Horadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton10))
                                     .addGroup(frameAdminLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(fechacitadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(130, 130, 130)
-                        .addComponent(imagenadmin, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                                        .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(fechacitadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(citadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel28)
+                                            .addComponent(jLabel27)
+                                            .addComponent(coloradmin, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel26)
+                                            .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                                        .addComponent(imagenadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(frameAdminLayout.createSequentialGroup()
+                                .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(frameAdminLayout.createSequentialGroup()
+                                        .addGap(60, 60, 60)
+                                        .addComponent(jLabel7))
+                                    .addGroup(frameAdminLayout.createSequentialGroup()
+                                        .addGap(162, 162, 162)
+                                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(45, 45, 45))
                     .addGroup(frameAdminLayout.createSequentialGroup()
-                        .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(frameAdminLayout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(frameAdminLayout.createSequentialGroup()
-                                .addGap(151, 151, 151)
-                                .addComponent(Asigcita, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(totalcaja)
+                        .addGap(163, 163, 163)
+                        .addComponent(Asigcita, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         frameAdminLayout.setVerticalGroup(
             frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,10 +808,7 @@ public class Interface extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(frameAdminLayout.createSequentialGroup()
-                        .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(frameAdminLayout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(imagenadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(frameAdminLayout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -807,22 +836,23 @@ public class Interface extends javax.swing.JFrame {
                                     .addComponent(fechacitadmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(razadmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(frameAdminLayout.createSequentialGroup()
-                                        .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(Horadmin))
-                                        .addGap(21, 21, 21))
-                                    .addGroup(frameAdminLayout.createSequentialGroup()
-                                        .addComponent(jLabel25)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel31)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(nacimientoadmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(85, 85, 85)))
-                        .addComponent(Asigcita))
+                                .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel25)
+                                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nacimientoadmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(frameAdminLayout.createSequentialGroup()
+                                .addComponent(imagenadmin, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(frameAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Horadmin))
+                                .addGap(21, 21, 21)))
+                        .addGap(18, 18, 18)
+                        .addComponent(Asigcita)
+                        .addGap(90, 90, 90))
                     .addGroup(frameAdminLayout.createSequentialGroup()
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -833,9 +863,13 @@ public class Interface extends javax.swing.JFrame {
                         .addComponent(elimcita)
                         .addGap(39, 39, 39)
                         .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(totalcaja, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cedcaja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(totalcaja, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         tablaoculta.setModel(new javax.swing.table.DefaultTableModel(
@@ -921,29 +955,32 @@ public class Interface extends javax.swing.JFrame {
             Tablacitas.getColumnModel().getColumn(0).setResizable(false);
             Tablacitas.getColumnModel().getColumn(1).setResizable(false);
             Tablacitas.getColumnModel().getColumn(2).setResizable(false);
+            Tablacitas.getColumnModel().getColumn(2).setPreferredWidth(50);
             Tablacitas.getColumnModel().getColumn(3).setResizable(false);
+            Tablacitas.getColumnModel().getColumn(3).setPreferredWidth(50);
             Tablacitas.getColumnModel().getColumn(4).setResizable(false);
             Tablacitas.getColumnModel().getColumn(5).setResizable(false);
             Tablacitas.getColumnModel().getColumn(6).setResizable(false);
             Tablacitas.getColumnModel().getColumn(7).setResizable(false);
+            Tablacitas.getColumnModel().getColumn(7).setPreferredWidth(70);
             Tablacitas.getColumnModel().getColumn(8).setResizable(false);
         }
 
         jLabel5.setFont(new java.awt.Font("Futura Lt BT", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(0, 51, 51));
         jLabel5.setText("Por favor digite su cedula");
 
         cedulacitas.setFont(new java.awt.Font("Futura Lt BT", 1, 14)); // NOI18N
-        cedulacitas.setForeground(new java.awt.Color(255, 255, 255));
+        cedulacitas.setForeground(new java.awt.Color(0, 51, 51));
         cedulacitas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulacitasActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(0, 0, 0));
+        jButton8.setBackground(new java.awt.Color(204, 255, 255));
         jButton8.setFont(new java.awt.Font("Futura Lt BT", 1, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setForeground(new java.awt.Color(0, 51, 51));
         jButton8.setText("Buscar");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -951,15 +988,21 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(0, 0, 0));
+        jButton9.setBackground(new java.awt.Color(204, 255, 255));
         jButton9.setFont(new java.awt.Font("Futura Lt BT", 1, 14)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setForeground(new java.awt.Color(0, 51, 51));
         jButton9.setText("Eliminar");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
+
+        jLabel30.setText("Si desea realizar cambios");
+
+        jLabel33.setText("Por favor");
+
+        jLabel34.setText("Elimine la cita y vuelvala a asignar");
 
         javax.swing.GroupLayout framecitasclienteLayout = new javax.swing.GroupLayout(framecitascliente.getContentPane());
         framecitascliente.getContentPane().setLayout(framecitasclienteLayout);
@@ -975,25 +1018,35 @@ public class Interface extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton8))
                     .addGroup(framecitasclienteLayout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton9)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 696, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(framecitasclienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton9)
+                            .addComponent(jLabel30)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel34))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         framecitasclienteLayout.setVerticalGroup(
             framecitasclienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(framecitasclienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(framecitasclienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton9)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(framecitasclienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cedulacitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton8))
+                .addGap(18, 18, 18)
+                .addGroup(framecitasclienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(framecitasclienteLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(jLabel30)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(framecitasclienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cedulacitas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton8))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel34)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -1054,6 +1107,38 @@ public class Interface extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        tablacaja.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Cedula", "Nombre", "Raza", "Color", "Fecha de nacimiento", "Tipo de cita", "Fecha de cita", "Hora de cita", "duracion cita"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane7.setViewportView(tablacaja);
+        if (tablacaja.getColumnModel().getColumnCount() > 0) {
+            tablacaja.getColumnModel().getColumn(0).setResizable(false);
+            tablacaja.getColumnModel().getColumn(1).setResizable(false);
+            tablacaja.getColumnModel().getColumn(2).setResizable(false);
+            tablacaja.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tablacaja.getColumnModel().getColumn(3).setResizable(false);
+            tablacaja.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tablacaja.getColumnModel().getColumn(4).setResizable(false);
+            tablacaja.getColumnModel().getColumn(5).setResizable(false);
+            tablacaja.getColumnModel().getColumn(6).setResizable(false);
+            tablacaja.getColumnModel().getColumn(7).setResizable(false);
+            tablacaja.getColumnModel().getColumn(7).setPreferredWidth(70);
+            tablacaja.getColumnModel().getColumn(8).setResizable(false);
+        }
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -1140,16 +1225,6 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         frameCliente.setVisible(true);
-        File f = new File("C:\\user"); // instacia de la carpeta
-        File file = new File("C:\\user", "Cliente.txt"); // instancia el archivo       
-        if (!file.exists()) {
-            f.mkdir();
-            try {
-                file.createNewFile();
-            } catch (IOException ex) {
-                System.out.println("Error en la creacion");
-            }
-        }
         tablaoculta.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1163,17 +1238,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         frameAdmin.setVisible(true);
-        arch = new File("C:\\user", "Agenda.txt");
-        File f = new File("C:\\user"); // instacia de la carpeta
-        File file = new File("C:\\user", "Agenda.txt"); // instancia el archivo       
-        if (!file.exists()) {
-            f.mkdir();
-            try {
-                file.createNewFile();
-            } catch (IOException ex) {
-                System.out.println("Error en la creacion");
-            }
-        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -1187,7 +1252,6 @@ public class Interface extends javax.swing.JFrame {
     private void buscarceduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarceduActionPerformed
         boolean encontrado = false;
         cedu = Cedula.getText();
-        Archivo = new File("c:\\user", "Cliente.txt");
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0);
         try (Scanner sc = new Scanner(Archivo)) {
@@ -1214,7 +1278,6 @@ public class Interface extends javax.swing.JFrame {
     private void crearceduActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearceduActionPerformed
         boolean encontrado = false;
         cedu = Cedula.getText();
-        Archivo = new File("c:\\user", "Cliente.txt");
         try (Scanner sc = new Scanner(Archivo)) {
             while (sc.hasNextLine() & encontrado == false) {
                 String lector = sc.nextLine();
@@ -1246,7 +1309,6 @@ public class Interface extends javax.swing.JFrame {
     private void SavecambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavecambiosActionPerformed
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         DefaultTableModel modoculta = (DefaultTableModel) tablaoculta.getModel();
-        Archivo = new File("c:\\user", "Cliente.txt");
         modoculta.setRowCount(0);
         try (Scanner sc = new Scanner(Archivo)) {
             while (sc.hasNextLine()) {
@@ -1422,9 +1484,8 @@ public class Interface extends javax.swing.JFrame {
         } else {
             DefaultTableModel citas = (DefaultTableModel) Tablacitas.getModel();
             DefaultTableModel citaso = (DefaultTableModel) citasocultas.getModel();
-            File A2 = new File("c:\\user", "Agenda.txt");
             citaso.setRowCount(0);
-            try (Scanner sc = new Scanner(A2)) {
+            try (Scanner sc = new Scanner(arch)) {
                 while (sc.hasNextLine()) {
                     String lector = sc.nextLine();
                     String datos[] = lector.split(",");
@@ -1480,9 +1541,8 @@ public class Interface extends javax.swing.JFrame {
         Fagenda.setVisible(true);
         citastabla.setVisible(true);
         DefaultTableModel citasvete = (DefaultTableModel) citastabla.getModel();
-        File A3 = new File("c:\\user", "Agenda.txt");
         citasvete.setRowCount(0);
-        try (Scanner sc = new Scanner(A3)) {
+        try (Scanner sc = new Scanner(arch)) {
             while (sc.hasNextLine()) {
                 String lector = sc.nextLine();
                 String datos[] = lector.split(",");
@@ -1557,13 +1617,56 @@ public class Interface extends javax.swing.JFrame {
 
     private void totalcajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_totalcajaActionPerformed
         // TODO add your handling code here:
+        String text = cedcaja.getText();
+        int total = 0;
+        DefaultTableModel citascaja = (DefaultTableModel) tablacaja.getModel();
+        citascaja.setRowCount(0);
+        try (Scanner sc = new Scanner(arch)) {
+            while (sc.hasNextLine()) {
+                String lector = sc.nextLine();
+                String datos[] = lector.split(",");
+                if (text.equals(datos[0])) {
+                    citascaja.addRow(new Object[]{datos[0], datos[1], datos[2], datos[3], datos[4], datos[5], datos[6], datos[7], datos[8]});
+                }
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un problema, estamos en ello");
+        }
+        for (int i = 0; i < citascaja.getRowCount(); i++) {
+            String aux = (String) tablacaja.getValueAt(i, 5);
+            switch (aux) {
+                case "Consulta veterinario":
+                    total += 60000;
+                    break;
+                case "Control":
+                    total += 10000;
+                    break;
+                case "Desparasitación":
+                    total += 40000;
+                    break;
+                case "Vacunación":
+                    total += 35000;
+                    break;
+                case "Guarderia solo por día":
+                    total += 35000;
+                    break;
+                case "Radiologia":
+                    total += 100000;
+                    break;
+                case "BañoF":
+                    total += 25000;
+                    break;
+            }
+        }
+        JOptionPane.showMessageDialog(null, "El total a pagar del cliente es $" + total);
+        //"Consulta veterinario", "Control", "Desparasitación", "Vacunación", "Guarderia solo por día", "Radiologia", "Baño"
     }//GEN-LAST:event_totalcajaActionPerformed
 
     private void AsigcitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AsigcitaActionPerformed
         // Asignar cita
         Boolean continuar = true;
         int ceduladm = 0, casoveter = 0;
-        String fechadm = "", fechacitadm = "", citadm = "",tiempoocupado = "";
+        String fechadm = "", fechacitadm = "", citadm = "", tiempoocupado = "";
         try {
             ceduladm = Integer.parseInt(ceduladmin.getText());
         } catch (NumberFormatException e) {
@@ -1676,9 +1779,8 @@ public class Interface extends javax.swing.JFrame {
         Fagenda.setVisible(true);
         citastabla.setVisible(true);
         DefaultTableModel citasvete = (DefaultTableModel) citastabla.getModel();
-        File A3 = new File("c:\\user", "Agenda.txt");
         citasvete.setRowCount(0);
-        try (Scanner sc = new Scanner(A3)) {
+        try (Scanner sc = new Scanner(arch)) {
             while (sc.hasNextLine()) {
                 String lector = sc.nextLine();
                 String datos[] = lector.split(",");
@@ -1851,6 +1953,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton buscarcedu;
     private javax.swing.JButton buscarhoras;
     private javax.swing.JTextField cdueño;
+    private javax.swing.JTextField cedcaja;
     private javax.swing.JTextField cedulacitas;
     private javax.swing.JTextField ceduladmin;
     private javax.swing.JComboBox<String> citadmin;
@@ -1902,8 +2005,12 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1915,9 +2022,11 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private com.toedter.calendar.JDateChooser nacimientoadmin;
     private javax.swing.JTextField nombreadmin;
     private javax.swing.JTextField razadmin;
+    private javax.swing.JTable tablacaja;
     private javax.swing.JTable tablaoculta;
     private javax.swing.JTable table;
     private javax.swing.JTextField tiempoo;
